@@ -41,9 +41,8 @@ impl Piece {
         };
 
         match piece.kind {
-            Kind::King => piece.update_king_moves(),
             Kind::Pawn => piece.update_pawn_moves(),
-            _ => piece.update_pawn_moves(),
+            _ => piece.update_moves(),
         }
 
         piece
@@ -54,19 +53,39 @@ impl Piece {
         self.position = Position { x: new_x, y: new_y };
 
         match self.kind {
-            Kind::King => self.update_king_moves(),
             Kind::Pawn => self.update_pawn_moves(),
-            _ => self.valid_moves.clear(),
+            _ => self.update_moves(),
         }
 
         old_position
+    }
+
+    pub fn update_moves(&mut self) {
+        self.valid_moves.clear();
+
+        let current_point = ValidMove {
+            x: self.position.x as i8,
+            y: self.position.y as i8,
+        };
+
+        for point in Kind::possible_moves(&self.kind).into_iter() {
+            let new_x = current_point.x + point.x;
+            let new_y = current_point.y + point.y;
+
+            self.valid_moves.push(ValidMove { x: new_x, y: new_y })
+        }
     }
 }
 
 impl Kind {
     pub fn possible_moves(&self) -> Vec<ValidMove> {
         match self {
-            Kind::Bishop => self.sliding_moves(&[(-1, 1), (1, 1), (-1, -1), (1, -1)]),
+            Kind::Bishop => self.sliding_moves(&[
+                (-1, 1),  // North-Est
+                (1, 1),   // North-Ouest
+                (-1, -1), // South-Est
+                (1, -1),  // South-Ouest
+            ]),
             Kind::King => vec![
                 ValidMove { x: -1, y: 1 }, // Around
                 ValidMove { x: 0, y: 1 },
@@ -103,7 +122,12 @@ impl Kind {
                 (0, -1),  // South
                 (-1, -1), // South-Ouest
             ]),
-            Kind::Rook => self.sliding_moves(&[(-1, 0), (0, 1), (1, 0), (0, -1)]),
+            Kind::Rook => self.sliding_moves(&[
+                (-1, 0), // Est
+                (0, 1),  // North
+                (1, 0),  // Ouest
+                (0, -1), // South
+            ]),
         }
     }
 
