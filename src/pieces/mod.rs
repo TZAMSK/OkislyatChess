@@ -81,7 +81,7 @@ impl Kind {
     fn sliding_moves(&self, directions: &[(i32, i32)]) -> Vec<ValidMove> {
         let mut moves = Vec::new();
         for &(x, y) in directions {
-            for step in 1..5 {
+            for step in 1..8 {
                 moves.push(ValidMove::new(x * step, y * step));
             }
         }
