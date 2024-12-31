@@ -1,10 +1,10 @@
 mod pawn;
 
 pub struct Piece {
-    kind: Kind,
-    color: Color,
-    position: Position,
-    valid_moves: Vec<ValidMove>,
+    pub kind: Kind,
+    pub color: Color,
+    pub position: Position,
+    pub valid_moves: Vec<ValidMove>,
     //menaces: Vec<Piece>,
 }
 
@@ -22,16 +22,34 @@ pub enum Color {
     White,
 }
 
+#[derive(Clone)]
 pub struct Position {
-    x: u32,
-    y: u32,
+    pub x: u8,
+    pub y: u8,
 }
 
-pub type ValidMove = cgmath::Point2<i32>;
+pub type ValidMove = cgmath::Point2<i8>;
 
 pub trait Move {
-    fn make_a_move(&self, new_x: u32, new_y: u32) -> Position;
-    fn valid_position(&self, new_x: u32, new_y: u32) -> Position;
+    fn make_a_move(&mut self, new_x: u8, new_y: u8) -> Position;
+}
+
+impl Piece {
+    pub fn new(kind: Kind, color: Color, position: Position) -> Self {
+        let mut piece = Piece {
+            kind,
+            color,
+            position,
+            valid_moves: Vec::new(),
+        };
+
+        match piece.kind {
+            Kind::Pawn => piece.update_pawn_moves(),
+            _ => piece.update_pawn_moves(),
+        }
+
+        piece
+    }
 }
 
 impl Kind {
@@ -78,7 +96,7 @@ impl Kind {
         }
     }
 
-    fn sliding_moves(&self, directions: &[(i32, i32)]) -> Vec<ValidMove> {
+    fn sliding_moves(&self, directions: &[(i8, i8)]) -> Vec<ValidMove> {
         let mut moves = Vec::new();
         for &(x, y) in directions {
             for step in 1..8 {
