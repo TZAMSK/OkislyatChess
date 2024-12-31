@@ -11,18 +11,30 @@ mod tests {
                 ValidMove { x: -2, y: 2 },
                 ValidMove { x: -3, y: 3 },
                 ValidMove { x: -4, y: 4 },
+                ValidMove { x: -5, y: 5 },
+                ValidMove { x: -6, y: 6 },
+                ValidMove { x: -7, y: 7 },
                 ValidMove { x: 1, y: 1 }, // North-Est
                 ValidMove { x: 2, y: 2 },
                 ValidMove { x: 3, y: 3 },
                 ValidMove { x: 4, y: 4 },
+                ValidMove { x: 5, y: 5 },
+                ValidMove { x: 6, y: 6 },
+                ValidMove { x: 7, y: 7 },
                 ValidMove { x: -1, y: -1 }, // South-Ouest
                 ValidMove { x: -2, y: -2 },
                 ValidMove { x: -3, y: -3 },
                 ValidMove { x: -4, y: -4 },
+                ValidMove { x: -5, y: -5 },
+                ValidMove { x: -6, y: -6 },
+                ValidMove { x: -7, y: -7 },
                 ValidMove { x: 1, y: -1 }, // South-Est
                 ValidMove { x: 2, y: -2 },
                 ValidMove { x: 3, y: -3 },
                 ValidMove { x: 4, y: -4 },
+                ValidMove { x: 5, y: -5 },
+                ValidMove { x: 6, y: -6 },
+                ValidMove { x: 7, y: -7 },
             ]
         )
     }
@@ -83,34 +95,58 @@ mod tests {
                 ValidMove { x: -2, y: 0 },
                 ValidMove { x: -3, y: 0 },
                 ValidMove { x: -4, y: 0 },
+                ValidMove { x: -5, y: 0 },
+                ValidMove { x: -6, y: 0 },
+                ValidMove { x: -7, y: 0 },
                 ValidMove { x: -1, y: 1 }, // North-Ouest
                 ValidMove { x: -2, y: 2 },
                 ValidMove { x: -3, y: 3 },
                 ValidMove { x: -4, y: 4 },
+                ValidMove { x: -5, y: 5 },
+                ValidMove { x: -6, y: 6 },
+                ValidMove { x: -7, y: 7 },
                 ValidMove { x: 0, y: 1 }, // North
                 ValidMove { x: 0, y: 2 },
                 ValidMove { x: 0, y: 3 },
                 ValidMove { x: 0, y: 4 },
+                ValidMove { x: 0, y: 5 },
+                ValidMove { x: 0, y: 6 },
+                ValidMove { x: 0, y: 7 },
                 ValidMove { x: 1, y: 1 }, // North-Est
                 ValidMove { x: 2, y: 2 },
                 ValidMove { x: 3, y: 3 },
                 ValidMove { x: 4, y: 4 },
+                ValidMove { x: 5, y: 5 },
+                ValidMove { x: 6, y: 6 },
+                ValidMove { x: 7, y: 7 },
                 ValidMove { x: 1, y: 0 }, // Est
                 ValidMove { x: 2, y: 0 },
                 ValidMove { x: 3, y: 0 },
                 ValidMove { x: 4, y: 0 },
+                ValidMove { x: 5, y: 0 },
+                ValidMove { x: 6, y: 0 },
+                ValidMove { x: 7, y: 0 },
                 ValidMove { x: 1, y: -1 }, // South-Est
                 ValidMove { x: 2, y: -2 },
                 ValidMove { x: 3, y: -3 },
                 ValidMove { x: 4, y: -4 },
+                ValidMove { x: 5, y: -5 },
+                ValidMove { x: 6, y: -6 },
+                ValidMove { x: 7, y: -7 },
                 ValidMove { x: 0, y: -1 }, // South
                 ValidMove { x: 0, y: -2 },
                 ValidMove { x: 0, y: -3 },
                 ValidMove { x: 0, y: -4 },
+                ValidMove { x: 0, y: -5 },
+                ValidMove { x: 0, y: -6 },
+                ValidMove { x: 0, y: -7 },
                 ValidMove { x: -1, y: -1 }, // South-Ouest
                 ValidMove { x: -2, y: -2 },
                 ValidMove { x: -3, y: -3 },
                 ValidMove { x: -4, y: -4 },
+                ValidMove { x: -5, y: -5 },
+                ValidMove { x: -6, y: -6 },
+                ValidMove { x: -7, y: -7 },
             ]
         )
     }
@@ -124,18 +160,30 @@ mod tests {
                 ValidMove { x: -2, y: 0 },
                 ValidMove { x: -3, y: 0 },
                 ValidMove { x: -4, y: 0 },
+                ValidMove { x: -5, y: 0 },
+                ValidMove { x: -6, y: 0 },
+                ValidMove { x: -7, y: 0 },
                 ValidMove { x: 0, y: 1 }, // North
                 ValidMove { x: 0, y: 2 },
                 ValidMove { x: 0, y: 3 },
                 ValidMove { x: 0, y: 4 },
+                ValidMove { x: 0, y: 5 },
+                ValidMove { x: 0, y: 6 },
+                ValidMove { x: 0, y: 7 },
                 ValidMove { x: 1, y: 0 }, // Est
                 ValidMove { x: 2, y: 0 },
                 ValidMove { x: 3, y: 0 },
                 ValidMove { x: 4, y: 0 },
+                ValidMove { x: 5, y: 0 },
+                ValidMove { x: 6, y: 0 },
+                ValidMove { x: 7, y: 0 },
                 ValidMove { x: 0, y: -1 }, // South
                 ValidMove { x: 0, y: -2 },
                 ValidMove { x: 0, y: -3 },
                 ValidMove { x: 0, y: -4 },
+                ValidMove { x: 0, y: -5 },
+                ValidMove { x: 0, y: -6 },
+                ValidMove { x: 0, y: -7 },
             ]
         )
     }
