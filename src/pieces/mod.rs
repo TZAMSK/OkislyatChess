@@ -1,3 +1,4 @@
+mod king;
 mod pawn;
 
 pub struct Piece {
@@ -30,10 +31,6 @@ pub struct Position {
 
 pub type ValidMove = cgmath::Point2<i8>;
 
-pub trait Move {
-    fn make_a_move(&mut self, new_x: u8, new_y: u8) -> Position;
-}
-
 impl Piece {
     pub fn new(kind: Kind, color: Color, position: Position) -> Self {
         let mut piece = Piece {
@@ -44,11 +41,25 @@ impl Piece {
         };
 
         match piece.kind {
+            Kind::King => piece.update_king_moves(),
             Kind::Pawn => piece.update_pawn_moves(),
             _ => piece.update_pawn_moves(),
         }
 
         piece
+    }
+
+    pub fn make_a_move(&mut self, new_x: u8, new_y: u8) -> Position {
+        let old_position = self.position.clone();
+        self.position = Position { x: new_x, y: new_y };
+
+        match self.kind {
+            Kind::King => self.update_king_moves(),
+            Kind::Pawn => self.update_pawn_moves(),
+            _ => self.valid_moves.clear(),
+        }
+
+        old_position
     }
 }
 

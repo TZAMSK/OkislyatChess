@@ -1,44 +1,23 @@
-use super::{Kind, Move, Piece, Position, ValidMove};
-
-impl Move for Piece {
-    fn make_a_move(&mut self, new_x: u8, new_y: u8) -> Position {
-        let old_position = self.position.clone();
-        self.position = Position { x: new_x, y: new_y };
-
-        match self.kind {
-            Kind::Pawn => {
-                self.update_pawn_moves();
-            }
-            _ => self.valid_moves.clear(),
-        }
-
-        old_position
-    }
-}
+use super::{Kind, Piece, ValidMove};
 
 impl Piece {
     pub fn update_pawn_moves(&mut self) {
         self.valid_moves.clear();
 
-        if self.position.y == 2 {
-            self.valid_moves.push(ValidMove {
-                x: self.position.x as i8,
-                y: (self.position.y + 2) as i8,
-            });
-        }
-        self.valid_moves.push(ValidMove {
-            x: (self.position.x - 1) as i8,
-            y: (self.position.y + 1) as i8,
-        });
-
-        self.valid_moves.push(ValidMove {
+        let current_point = ValidMove {
             x: self.position.x as i8,
-            y: (self.position.y + 1) as i8,
-        });
+            y: self.position.y as i8,
+        };
 
-        self.valid_moves.push(ValidMove {
-            x: (self.position.x + 1) as i8,
-            y: (self.position.y + 1) as i8,
-        });
+        for point in Kind::possible_moves(&self.kind).into_iter() {
+            let new_x = current_point.x + point.x;
+            let new_y = current_point.y + point.y;
+
+            if point == (ValidMove { x: 0, y: 2 }) && self.position.y != 2 {
+                continue;
+            }
+
+            self.valid_moves.push(ValidMove { x: new_x, y: new_y })
+        }
     }
 }

@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use crate::pieces::{Color, Kind, Move, Piece, Position, ValidMove};
+    use crate::pieces::{Color, Kind, Piece, Position, ValidMove};
 
     #[test]
     fn pawn_valid_moves_after_double_jump() {
@@ -70,10 +70,10 @@ mod tests {
         assert_eq!(
             pawn.valid_moves,
             vec![
-                ValidMove { x: 3, y: 4 },
                 ValidMove { x: 2, y: 3 },
                 ValidMove { x: 3, y: 3 },
-                ValidMove { x: 4, y: 3 }
+                ValidMove { x: 4, y: 3 },
+                ValidMove { x: 3, y: 4 }
             ]
         );
     }
