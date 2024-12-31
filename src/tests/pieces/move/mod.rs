@@ -1,8 +1,9 @@
+mod king;
 mod pawn;
 
 #[cfg(test)]
 mod tests {
-    use crate::pieces::{Color, Kind, Move, Piece, Position, ValidMove};
+    use crate::pieces::{Kind, ValidMove};
 
     #[test]
     fn list_of_moves_bishop() {
