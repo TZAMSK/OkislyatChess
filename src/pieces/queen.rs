@@ -5,14 +5,14 @@ impl Queen {
         "\
     \n\
 ◀█▟█▙█▶\n\
- ◥█ █◤\n\
+  ◥█◈█◤\n\
   ███\n\
 ▗█████▖\n\
     "
     }
 
     pub fn notation<'a>() -> &'a str {
-        "K"
+        "Q"
     }
 
     pub fn mini_draw() -> &'static str {
