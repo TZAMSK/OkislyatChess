@@ -6,13 +6,13 @@ impl Rook {
     \n\
     █▟█▙█\n\
     ▜███▛\n\
-     ███\n\
+    ▐███▌\n\
    ▗█████▖\n\
     "
     }
 
     pub fn notation<'a>() -> &'a str {
-        "K"
+        "R"
     }
 
     pub fn mini_draw() -> &'static str {

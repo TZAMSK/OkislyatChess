@@ -5,10 +5,7 @@ mod pawn;
 mod queen;
 mod rook;
 
-use {
-    bishop::Bishop, color_eyre::owo_colors::OwoColorize, king::King, knight::Knight, pawn::Pawn,
-    queen::Queen, rook::Rook,
-};
+use {bishop::Bishop, king::King, knight::Knight, pawn::Pawn, queen::Queen, rook::Rook};
 
 pub struct Piece {
     pub kind: Kind,
@@ -102,9 +99,9 @@ impl Piece {
 
     pub fn draw(&self) -> &str {
         match self.kind {
-            Kind::Bishop => Rook::draw(),
+            Kind::Bishop => Bishop::draw(),
             Kind::King => King::draw(),
-            Kind::Knight => King::draw(),
+            Kind::Knight => Knight::draw(),
             Kind::Pawn => Pawn::draw(),
             Kind::Queen => Queen::draw(),
             Kind::Rook => Rook::draw(),
@@ -113,9 +110,9 @@ impl Piece {
 
     pub fn notation(&self) -> &str {
         match self.kind {
-            Kind::Bishop => Rook::notation(),
+            Kind::Bishop => Bishop::notation(),
             Kind::King => King::notation(),
-            Kind::Knight => King::notation(),
+            Kind::Knight => Knight::notation(),
             Kind::Pawn => Pawn::notation(),
             Kind::Queen => Queen::notation(),
             Kind::Rook => Rook::notation(),
@@ -124,9 +121,9 @@ impl Piece {
 
     pub fn mini_draw(&self) -> &str {
         match self.kind {
-            Kind::Bishop => Rook::mini_draw(),
+            Kind::Bishop => Bishop::mini_draw(),
             Kind::King => King::mini_draw(),
-            Kind::Knight => King::mini_draw(),
+            Kind::Knight => Knight::mini_draw(),
             Kind::Pawn => Pawn::mini_draw(),
             Kind::Queen => Queen::mini_draw(),
             Kind::Rook => Rook::mini_draw(),

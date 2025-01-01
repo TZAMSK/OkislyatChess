@@ -3,11 +3,11 @@ pub struct King;
 impl King {
     pub fn draw() -> &'static str {
         "\
-       ✚\n\
-     ▞▀▄▀▚\n\
-     ▙▄█▄▟\n\
-      ███\n\
-    ▗█████▖\n\
+      ✚\n\
+    ▞▀▄▀▚\n\
+    ▙▄█▄▟\n\
+    ▐███▌\n\
+   ▗█████▖\n\
     "
     }
 

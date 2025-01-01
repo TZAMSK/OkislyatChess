@@ -30,13 +30,13 @@ impl Pawn {
         \n\
         \n\
       ▟█▙\n\
-       █\n\
+      ▜█▛\n\
      ▟███▙\n\
     "
     }
 
     pub fn notation<'a>() -> &'a str {
-        "K"
+        "P"
     }
 
     pub fn mini_draw() -> &'static str {
