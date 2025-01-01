@@ -1,1 +1,2 @@
-mod pieces;
+mod board;
+mod pieces;
