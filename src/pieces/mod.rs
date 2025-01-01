@@ -69,12 +69,7 @@ impl Piece {
     fn filtered_moves(&self, new_moves: Vec<ValidMove>) -> Vec<ValidMove> {
         new_moves
             .into_iter()
-            .filter(|move_| {
-                let new_x = self.position.x as i8 + move_.x;
-                let new_y = self.position.y as i8 + move_.y;
-
-                new_x >= 1 && new_x <= 8 && new_y >= 1 && new_y <= 8
-            })
+            .filter(|move_| move_.x >= 1 && move_.x <= 8 && move_.y >= 1 && move_.y <= 8)
             .collect()
     }
 
