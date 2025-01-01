@@ -4,17 +4,17 @@ mod tests {
 
     #[test]
     fn rook_valid_moves_initialy() {
-        let king = Piece::new(Kind::Rook, Color::Black, Position { x: 5, y: 5 });
+        let mut rook = Piece::new(Kind::Rook, Color::Black, Position { x: 5, y: 5 });
 
-        assert_eq!(king.valid_moves.len(), 28);
+        assert_eq!(rook.new_moves().len(), 28);
     }
 
     #[test]
     fn rook_valid_moves_list_initialy() {
-        let pawn = Piece::new(Kind::Rook, Color::Black, Position { x: 5, y: 5 });
+        let mut rook = Piece::new(Kind::Rook, Color::Black, Position { x: 5, y: 5 });
 
         assert_eq!(
-            pawn.valid_moves,
+            rook.new_moves(),
             vec![
                 ValidMove { x: 4, y: 5 }, // Est
                 ValidMove { x: 3, y: 5 },
@@ -49,22 +49,22 @@ mod tests {
     }
 
     #[test]
-    fn bishop_valid_moves_after_move() {
-        let mut king = Piece::new(Kind::Rook, Color::Black, Position { x: 4, y: 5 });
+    fn rook_valid_moves_after_move() {
+        let mut rook = Piece::new(Kind::Rook, Color::Black, Position { x: 4, y: 5 });
 
-        king.make_a_move(5, 5);
+        rook.make_a_move(5, 5);
 
-        assert_eq!(king.valid_moves.len(), 28);
+        assert_eq!(rook.new_moves().len(), 28);
     }
 
     #[test]
-    fn king_valid_moves_list_after_move() {
-        let mut pawn = Piece::new(Kind::Rook, Color::Black, Position { x: 4, y: 5 });
+    fn rook_valid_moves_list_after_move() {
+        let mut rook = Piece::new(Kind::Rook, Color::Black, Position { x: 4, y: 5 });
 
-        pawn.make_a_move(5, 5);
+        rook.make_a_move(5, 5);
 
         assert_eq!(
-            pawn.valid_moves,
+            rook.new_moves(),
             vec![
                 ValidMove { x: 4, y: 5 }, // Est
                 ValidMove { x: 3, y: 5 },

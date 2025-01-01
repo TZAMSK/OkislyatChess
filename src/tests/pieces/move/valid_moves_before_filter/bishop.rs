@@ -4,17 +4,17 @@ mod tests {
 
     #[test]
     fn bishop_valid_moves_initialy() {
-        let king = Piece::new(Kind::Bishop, Color::Black, Position { x: 5, y: 4 });
+        let mut bishop = Piece::new(Kind::Bishop, Color::Black, Position { x: 5, y: 4 });
 
-        assert_eq!(king.valid_moves.len(), 28);
+        assert_eq!(bishop.new_moves().len(), 28);
     }
 
     #[test]
-    fn king_valid_moves_list_initialy() {
-        let pawn = Piece::new(Kind::Bishop, Color::Black, Position { x: 5, y: 4 });
+    fn bishop_valid_moves_list_initialy() {
+        let mut bishop = Piece::new(Kind::Bishop, Color::Black, Position { x: 5, y: 4 });
 
         assert_eq!(
-            pawn.valid_moves,
+            bishop.new_moves(),
             vec![
                 ValidMove { x: 4, y: 5 }, // North-est
                 ValidMove { x: 3, y: 6 },
@@ -50,21 +50,21 @@ mod tests {
 
     #[test]
     fn bishop_valid_moves_after_move() {
-        let mut king = Piece::new(Kind::Bishop, Color::Black, Position { x: 4, y: 5 });
+        let mut bishop = Piece::new(Kind::Bishop, Color::Black, Position { x: 4, y: 5 });
 
-        king.make_a_move(5, 4);
+        bishop.make_a_move(5, 4);
 
-        assert_eq!(king.valid_moves.len(), 28);
+        assert_eq!(bishop.new_moves().len(), 28);
     }
 
     #[test]
-    fn king_valid_moves_list_after_move() {
-        let mut pawn = Piece::new(Kind::Bishop, Color::Black, Position { x: 4, y: 5 });
+    fn bishop_valid_moves_list_after_move() {
+        let mut bishop = Piece::new(Kind::Bishop, Color::Black, Position { x: 4, y: 5 });
 
-        pawn.make_a_move(5, 4);
+        bishop.make_a_move(5, 4);
 
         assert_eq!(
-            pawn.valid_moves,
+            bishop.new_moves(),
             vec![
                 ValidMove { x: 4, y: 5 }, // North-est
                 ValidMove { x: 3, y: 6 },

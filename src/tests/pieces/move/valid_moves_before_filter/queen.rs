@@ -4,17 +4,17 @@ mod tests {
 
     #[test]
     fn queen_valid_moves_initialy() {
-        let king = Piece::new(Kind::Queen, Color::Black, Position { x: 5, y: 5 });
+        let mut queen = Piece::new(Kind::Queen, Color::Black, Position { x: 5, y: 5 });
 
-        assert_eq!(king.valid_moves.len(), 56);
+        assert_eq!(queen.new_moves().len(), 56);
     }
 
     #[test]
     fn queen_valid_moves_list_initialy() {
-        let pawn = Piece::new(Kind::Queen, Color::Black, Position { x: 5, y: 5 });
+        let mut queen = Piece::new(Kind::Queen, Color::Black, Position { x: 5, y: 5 });
 
         assert_eq!(
-            pawn.valid_moves,
+            queen.new_moves(),
             vec![
                 ValidMove { x: 4, y: 5 }, // Ouest
                 ValidMove { x: 3, y: 5 },
@@ -78,21 +78,21 @@ mod tests {
 
     #[test]
     fn queen_valid_moves_after_move() {
-        let mut king = Piece::new(Kind::Queen, Color::Black, Position { x: 4, y: 5 });
+        let mut queen = Piece::new(Kind::Queen, Color::Black, Position { x: 4, y: 5 });
 
-        king.make_a_move(5, 5);
+        queen.make_a_move(5, 5);
 
-        assert_eq!(king.valid_moves.len(), 56);
+        assert_eq!(queen.new_moves().len(), 56);
     }
 
     #[test]
     fn queen_valid_moves_list_after_move() {
-        let mut pawn = Piece::new(Kind::Queen, Color::Black, Position { x: 4, y: 5 });
+        let mut queen = Piece::new(Kind::Queen, Color::Black, Position { x: 4, y: 5 });
 
-        pawn.make_a_move(5, 5);
+        queen.make_a_move(5, 5);
 
         assert_eq!(
-            pawn.valid_moves,
+            queen.new_moves(),
             vec![
                 ValidMove { x: 4, y: 5 }, // Ouest
                 ValidMove { x: 3, y: 5 },
