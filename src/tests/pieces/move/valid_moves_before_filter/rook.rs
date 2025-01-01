@@ -30,14 +30,14 @@ mod tests {
                 ValidMove { x: 5, y: 10 },
                 ValidMove { x: 5, y: 11 },
                 ValidMove { x: 5, y: 12 },
-                ValidMove { x: 6, y: 5 }, // Ouest
+                ValidMove { x: 6, y: 5 }, // West
                 ValidMove { x: 7, y: 5 },
                 ValidMove { x: 8, y: 5 },
                 ValidMove { x: 9, y: 5 },
                 ValidMove { x: 10, y: 5 },
                 ValidMove { x: 11, y: 5 },
                 ValidMove { x: 12, y: 5 },
-                ValidMove { x: 5, y: 4 }, // Sud
+                ValidMove { x: 5, y: 4 }, // South
                 ValidMove { x: 5, y: 3 },
                 ValidMove { x: 5, y: 2 },
                 ValidMove { x: 5, y: 1 },
@@ -80,14 +80,14 @@ mod tests {
                 ValidMove { x: 5, y: 10 },
                 ValidMove { x: 5, y: 11 },
                 ValidMove { x: 5, y: 12 },
-                ValidMove { x: 6, y: 5 }, // Ouest
+                ValidMove { x: 6, y: 5 }, // West
                 ValidMove { x: 7, y: 5 },
                 ValidMove { x: 8, y: 5 },
                 ValidMove { x: 9, y: 5 },
                 ValidMove { x: 10, y: 5 },
                 ValidMove { x: 11, y: 5 },
                 ValidMove { x: 12, y: 5 },
-                ValidMove { x: 5, y: 4 }, // Sud
+                ValidMove { x: 5, y: 4 }, // South
                 ValidMove { x: 5, y: 3 },
                 ValidMove { x: 5, y: 2 },
                 ValidMove { x: 5, y: 1 },
