@@ -21,3 +21,25 @@ impl Piece {
         }
     }
 }
+
+pub struct Pawn;
+
+impl Pawn {
+    pub fn draw() -> &'static str {
+        "\
+        \n\
+        \n\
+      ▟█▙\n\
+       █\n\
+     ▟███▙\n\
+    "
+    }
+
+    pub fn notation<'a>() -> &'a str {
+        "K"
+    }
+
+    pub fn mini_draw() -> &'static str {
+        "♙"
+    }
+}
