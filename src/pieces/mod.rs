@@ -15,6 +15,7 @@ pub struct Piece {
     //menaces: Vec<Piece>,
 }
 
+#[derive(PartialEq)]
 pub enum Kind {
     Bishop,
     King,
@@ -24,6 +25,7 @@ pub enum Kind {
     Rook,
 }
 
+#[derive(PartialEq, Clone)]
 pub enum Color {
     Black,
     White,
