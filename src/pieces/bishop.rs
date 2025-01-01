@@ -1,21 +1,21 @@
-pub struct King;
+pub struct Bishop;
 
-impl King {
+impl Bishop {
     pub fn draw() -> &'static str {
         "\
-       ✚\n\
-     ▞▀▄▀▚\n\
-     ▙▄█▄▟\n\
+    \n\
+       ⭘\n\
+      █ █\n\
       ███\n\
     ▗█████▖\n\
     "
     }
 
     pub fn notation<'a>() -> &'a str {
-        "K"
+        "B"
     }
 
     pub fn mini_draw() -> &'static str {
-        "♔"
+        "♗"
     }
 }

@@ -1,13 +1,13 @@
-pub struct King;
+pub struct Rook;
 
-impl King {
+impl Rook {
     pub fn draw() -> &'static str {
         "\
-       ✚\n\
-     ▞▀▄▀▚\n\
-     ▙▄█▄▟\n\
-      ███\n\
-    ▗█████▖\n\
+    \n\
+    █▟█▙█\n\
+    ▜███▛\n\
+     ███\n\
+   ▗█████▖\n\
     "
     }
 
@@ -16,6 +16,6 @@ impl King {
     }
 
     pub fn mini_draw() -> &'static str {
-        "♔"
+        "♖"
     }
 }
