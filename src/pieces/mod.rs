@@ -42,7 +42,7 @@ impl Piece {
 
         match piece.kind {
             Kind::Pawn => piece.update_pawn_moves(),
-            _ => piece.update_moves(),
+            _ => piece.updated_new_moves(),
         }
 
         piece
@@ -54,14 +54,32 @@ impl Piece {
 
         match self.kind {
             Kind::Pawn => self.update_pawn_moves(),
-            _ => self.update_moves(),
+            _ => self.updated_new_moves(),
         }
 
         old_position
     }
 
-    pub fn update_moves(&mut self) {
-        self.valid_moves.clear();
+    fn updated_new_moves(&mut self) {
+        let new_moves = self.new_moves();
+
+        self.valid_moves = self.filtered_moves(new_moves)
+    }
+
+    fn filtered_moves(&self, new_moves: Vec<ValidMove>) -> Vec<ValidMove> {
+        new_moves
+            .into_iter()
+            .filter(|move_| {
+                let new_x = self.position.x as i8 + move_.x;
+                let new_y = self.position.y as i8 + move_.y;
+
+                new_x >= 1 && new_x <= 8 && new_y >= 1 && new_y <= 8
+            })
+            .collect()
+    }
+
+    pub fn new_moves(&mut self) -> Vec<ValidMove> {
+        let mut valid_moves = Vec::new();
 
         let current_point = ValidMove {
             x: self.position.x as i8,
@@ -72,8 +90,10 @@ impl Piece {
             let new_x = current_point.x + point.x;
             let new_y = current_point.y + point.y;
 
-            self.valid_moves.push(ValidMove { x: new_x, y: new_y })
+            valid_moves.push(ValidMove { x: new_x, y: new_y })
         }
+
+        valid_moves
     }
 }
 
