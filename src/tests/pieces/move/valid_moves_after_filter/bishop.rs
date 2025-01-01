@@ -16,17 +16,17 @@ mod tests {
         assert_eq!(
             bishop.valid_moves,
             vec![
-                ValidMove { x: 4, y: 5 }, // North-est
+                ValidMove { x: 4, y: 5 }, // North-West
                 ValidMove { x: 3, y: 6 },
                 ValidMove { x: 2, y: 7 },
                 ValidMove { x: 1, y: 8 },
-                ValidMove { x: 6, y: 5 }, // North-Ouest
+                ValidMove { x: 6, y: 5 }, // North-East
                 ValidMove { x: 7, y: 6 },
                 ValidMove { x: 8, y: 7 },
-                ValidMove { x: 4, y: 3 }, // South-Est
+                ValidMove { x: 4, y: 3 }, // South-West
                 ValidMove { x: 3, y: 2 },
                 ValidMove { x: 2, y: 1 },
-                ValidMove { x: 6, y: 3 }, // Est-Ouest
+                ValidMove { x: 6, y: 3 }, // South-East
                 ValidMove { x: 7, y: 2 },
                 ValidMove { x: 8, y: 1 },
             ]
@@ -51,17 +51,17 @@ mod tests {
         assert_eq!(
             bishop.valid_moves,
             vec![
-                ValidMove { x: 4, y: 5 }, // North-est
+                ValidMove { x: 4, y: 5 }, // North-West
                 ValidMove { x: 3, y: 6 },
                 ValidMove { x: 2, y: 7 },
                 ValidMove { x: 1, y: 8 },
-                ValidMove { x: 6, y: 5 }, // North-Ouest
+                ValidMove { x: 6, y: 5 }, // North-East
                 ValidMove { x: 7, y: 6 },
                 ValidMove { x: 8, y: 7 },
-                ValidMove { x: 4, y: 3 }, // South-Est
+                ValidMove { x: 4, y: 3 }, // South-West
                 ValidMove { x: 3, y: 2 },
                 ValidMove { x: 2, y: 1 },
-                ValidMove { x: 6, y: 3 }, // Est-Ouest
+                ValidMove { x: 6, y: 3 }, // South-East
                 ValidMove { x: 7, y: 2 },
                 ValidMove { x: 8, y: 1 },
             ]
@@ -69,13 +69,13 @@ mod tests {
     }
 
     #[test]
-    fn bishop_valid_moves_initialy_can_only_move_south_est_when_placed_top_left_corner() {
+    fn bishop_valid_moves_initialy_can_only_move_south_east_when_placed_top_left_corner() {
         let bishop = Piece::new(Kind::Bishop, Color::Black, Position { x: 1, y: 8 });
 
         assert_eq!(
             bishop.valid_moves,
             vec![
-                ValidMove { x: 2, y: 7 }, // South-Est
+                ValidMove { x: 2, y: 7 }, // South-East
                 ValidMove { x: 3, y: 6 },
                 ValidMove { x: 4, y: 5 },
                 ValidMove { x: 5, y: 4 },
@@ -87,13 +87,13 @@ mod tests {
     }
 
     #[test]
-    fn bishop_valid_moves_initialy_can_only_move_south_ouest_when_placed_top_right_corner() {
+    fn bishop_valid_moves_initialy_can_only_move_south_west_when_placed_top_right_corner() {
         let bishop = Piece::new(Kind::Bishop, Color::Black, Position { x: 8, y: 8 });
 
         assert_eq!(
             bishop.valid_moves,
             vec![
-                ValidMove { x: 7, y: 7 }, // South-Ouest
+                ValidMove { x: 7, y: 7 }, // South-West
                 ValidMove { x: 6, y: 6 },
                 ValidMove { x: 5, y: 5 },
                 ValidMove { x: 4, y: 4 },
@@ -105,13 +105,13 @@ mod tests {
     }
 
     #[test]
-    fn bishop_valid_moves_initialy_can_only_move_north_est_when_placed_bottom_left_corner() {
+    fn bishop_valid_moves_initialy_can_only_move_north_east_when_placed_bottom_left_corner() {
         let bishop = Piece::new(Kind::Bishop, Color::Black, Position { x: 1, y: 1 });
 
         assert_eq!(
             bishop.valid_moves,
             vec![
-                ValidMove { x: 2, y: 2 }, // North-Est
+                ValidMove { x: 2, y: 2 }, // North-East
                 ValidMove { x: 3, y: 3 },
                 ValidMove { x: 4, y: 4 },
                 ValidMove { x: 5, y: 5 },
@@ -123,13 +123,13 @@ mod tests {
     }
 
     #[test]
-    fn bishop_valid_moves_initialy_can_only_move_north_ouest_when_placed_bottom_right_corner() {
+    fn bishop_valid_moves_initialy_can_only_move_north_west_when_placed_bottom_right_corner() {
         let bishop = Piece::new(Kind::Bishop, Color::Black, Position { x: 8, y: 1 });
 
         assert_eq!(
             bishop.valid_moves,
             vec![
-                ValidMove { x: 7, y: 2 }, // North-Ouest
+                ValidMove { x: 7, y: 2 }, // North-West
                 ValidMove { x: 6, y: 3 },
                 ValidMove { x: 5, y: 4 },
                 ValidMove { x: 4, y: 5 },

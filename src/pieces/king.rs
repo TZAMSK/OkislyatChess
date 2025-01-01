@@ -1,3 +1,3 @@
-use super::{Kind, Piece, ValidMove};
+use super::Piece;
 
 impl Piece {}

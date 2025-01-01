@@ -59,37 +59,37 @@ mod tests {
     }
 
     #[test]
-    fn king_valid_moves_initialy_can_only_move_est_south_and_south_est_when_placed_top_left_corner()
-    {
+    fn king_valid_moves_initialy_can_only_move_east_south_and_south_east_when_placed_top_left_corner(
+    ) {
         let king = Piece::new(Kind::King, Color::Black, Position { x: 1, y: 8 });
 
         assert_eq!(
             king.valid_moves,
             vec![
-                ValidMove { x: 2, y: 8 }, // Est
+                ValidMove { x: 2, y: 8 }, // East
                 ValidMove { x: 1, y: 7 }, // South
-                ValidMove { x: 2, y: 7 }, // South-Est
+                ValidMove { x: 2, y: 7 }, // South-East
             ]
         );
     }
 
     #[test]
-    fn king_valid_moves_initialy_can_only_move_ouest_south_ouest_and_south_when_placed_top_left_corner(
+    fn king_valid_moves_initialy_can_only_move_west_south_west_and_south_when_placed_top_left_corner(
     ) {
         let king = Piece::new(Kind::King, Color::Black, Position { x: 8, y: 8 });
 
         assert_eq!(
             king.valid_moves,
             vec![
-                ValidMove { x: 7, y: 8 }, // Ouest
-                ValidMove { x: 7, y: 7 }, // South-Ouest
+                ValidMove { x: 7, y: 8 }, // West
+                ValidMove { x: 7, y: 7 }, // South-West
                 ValidMove { x: 8, y: 7 }, // South
             ]
         );
     }
 
     #[test]
-    fn king_valid_moves_initialy_can_only_move_north_north_est_and_est_when_placed_bottom_left_corner(
+    fn king_valid_moves_initialy_can_only_move_north_north_east_and_east_when_placed_bottom_left_corner(
     ) {
         let king = Piece::new(Kind::King, Color::Black, Position { x: 1, y: 1 });
 
@@ -97,23 +97,23 @@ mod tests {
             king.valid_moves,
             vec![
                 ValidMove { x: 1, y: 2 }, // North
-                ValidMove { x: 2, y: 2 }, // North-Est
-                ValidMove { x: 2, y: 1 }, // Est
+                ValidMove { x: 2, y: 2 }, // North-East
+                ValidMove { x: 2, y: 1 }, // East
             ]
         );
     }
 
     #[test]
-    fn king_valid_moves_initialy_can_only_move_north_ouest_north_and_ouest_when_placed_top_left_corner(
+    fn king_valid_moves_initialy_can_only_move_north_west_north_and_west_when_placed_top_left_corner(
     ) {
         let king = Piece::new(Kind::King, Color::Black, Position { x: 8, y: 1 });
 
         assert_eq!(
             king.valid_moves,
             vec![
-                ValidMove { x: 7, y: 2 }, // North-ouest
+                ValidMove { x: 7, y: 2 }, // North-West
                 ValidMove { x: 8, y: 2 }, // North
-                ValidMove { x: 7, y: 1 }, // Ouest
+                ValidMove { x: 7, y: 1 }, // West
             ]
         );
     }

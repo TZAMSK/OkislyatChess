@@ -96,10 +96,10 @@ impl Kind {
     pub fn possible_moves(&self) -> Vec<ValidMove> {
         match self {
             Kind::Bishop => self.sliding_moves(&[
-                (-1, 1),  // North-Est
-                (1, 1),   // North-Ouest
-                (-1, -1), // South-Est
-                (1, -1),  // South-Ouest
+                (-1, 1),  // North-East
+                (1, 1),   // North-West
+                (-1, -1), // South-East
+                (1, -1),  // South-West
             ]),
             Kind::King => vec![
                 ValidMove { x: -1, y: 1 }, // Around
@@ -128,19 +128,19 @@ impl Kind {
                 ValidMove { x: 0, y: 2 },
             ],
             Kind::Queen => self.sliding_moves(&[
-                (-1, 0),  // Ouest
-                (-1, 1),  // North-Ouest
+                (-1, 0),  // West
+                (-1, 1),  // North-West
                 (0, 1),   // North
-                (1, 1),   // North-Est
-                (1, 0),   // Est
-                (1, -1),  // South-Est
+                (1, 1),   // North-East
+                (1, 0),   // East
+                (1, -1),  // South-East
                 (0, -1),  // South
-                (-1, -1), // South-Ouest
+                (-1, -1), // South-West
             ]),
             Kind::Rook => self.sliding_moves(&[
-                (-1, 0), // Est
+                (-1, 0), // East
                 (0, 1),  // North
-                (1, 0),  // Ouest
+                (1, 0),  // West
                 (0, -1), // South
             ]),
         }

@@ -14,28 +14,28 @@ mod tests {
         assert_eq!(
             Kind::Bishop.possible_moves(),
             vec![
-                ValidMove { x: -1, y: 1 }, // North-Ouest
+                ValidMove { x: -1, y: 1 }, // North-West
                 ValidMove { x: -2, y: 2 },
                 ValidMove { x: -3, y: 3 },
                 ValidMove { x: -4, y: 4 },
                 ValidMove { x: -5, y: 5 },
                 ValidMove { x: -6, y: 6 },
                 ValidMove { x: -7, y: 7 },
-                ValidMove { x: 1, y: 1 }, // North-Est
+                ValidMove { x: 1, y: 1 }, // North-East
                 ValidMove { x: 2, y: 2 },
                 ValidMove { x: 3, y: 3 },
                 ValidMove { x: 4, y: 4 },
                 ValidMove { x: 5, y: 5 },
                 ValidMove { x: 6, y: 6 },
                 ValidMove { x: 7, y: 7 },
-                ValidMove { x: -1, y: -1 }, // South-Ouest
+                ValidMove { x: -1, y: -1 }, // South-West
                 ValidMove { x: -2, y: -2 },
                 ValidMove { x: -3, y: -3 },
                 ValidMove { x: -4, y: -4 },
                 ValidMove { x: -5, y: -5 },
                 ValidMove { x: -6, y: -6 },
                 ValidMove { x: -7, y: -7 },
-                ValidMove { x: 1, y: -1 }, // South-Est
+                ValidMove { x: 1, y: -1 }, // South-East
                 ValidMove { x: 2, y: -2 },
                 ValidMove { x: 3, y: -3 },
                 ValidMove { x: 4, y: -4 },
@@ -98,14 +98,14 @@ mod tests {
         assert_eq!(
             Kind::Queen.possible_moves(),
             vec![
-                ValidMove { x: -1, y: 0 }, // Ouest
+                ValidMove { x: -1, y: 0 }, // West
                 ValidMove { x: -2, y: 0 },
                 ValidMove { x: -3, y: 0 },
                 ValidMove { x: -4, y: 0 },
                 ValidMove { x: -5, y: 0 },
                 ValidMove { x: -6, y: 0 },
                 ValidMove { x: -7, y: 0 },
-                ValidMove { x: -1, y: 1 }, // North-Ouest
+                ValidMove { x: -1, y: 1 }, // North-West
                 ValidMove { x: -2, y: 2 },
                 ValidMove { x: -3, y: 3 },
                 ValidMove { x: -4, y: 4 },
@@ -119,21 +119,21 @@ mod tests {
                 ValidMove { x: 0, y: 5 },
                 ValidMove { x: 0, y: 6 },
                 ValidMove { x: 0, y: 7 },
-                ValidMove { x: 1, y: 1 }, // North-Est
+                ValidMove { x: 1, y: 1 }, // North-East
                 ValidMove { x: 2, y: 2 },
                 ValidMove { x: 3, y: 3 },
                 ValidMove { x: 4, y: 4 },
                 ValidMove { x: 5, y: 5 },
                 ValidMove { x: 6, y: 6 },
                 ValidMove { x: 7, y: 7 },
-                ValidMove { x: 1, y: 0 }, // Est
+                ValidMove { x: 1, y: 0 }, // East
                 ValidMove { x: 2, y: 0 },
                 ValidMove { x: 3, y: 0 },
                 ValidMove { x: 4, y: 0 },
                 ValidMove { x: 5, y: 0 },
                 ValidMove { x: 6, y: 0 },
                 ValidMove { x: 7, y: 0 },
-                ValidMove { x: 1, y: -1 }, // South-Est
+                ValidMove { x: 1, y: -1 }, // South-East
                 ValidMove { x: 2, y: -2 },
                 ValidMove { x: 3, y: -3 },
                 ValidMove { x: 4, y: -4 },
@@ -147,7 +147,7 @@ mod tests {
                 ValidMove { x: 0, y: -5 },
                 ValidMove { x: 0, y: -6 },
                 ValidMove { x: 0, y: -7 },
-                ValidMove { x: -1, y: -1 }, // South-Ouest
+                ValidMove { x: -1, y: -1 }, // South-West
                 ValidMove { x: -2, y: -2 },
                 ValidMove { x: -3, y: -3 },
                 ValidMove { x: -4, y: -4 },
@@ -163,7 +163,7 @@ mod tests {
         assert_eq!(
             Kind::Rook.possible_moves(),
             vec![
-                ValidMove { x: -1, y: 0 }, // Ouest
+                ValidMove { x: -1, y: 0 }, // West
                 ValidMove { x: -2, y: 0 },
                 ValidMove { x: -3, y: 0 },
                 ValidMove { x: -4, y: 0 },
@@ -177,7 +177,7 @@ mod tests {
                 ValidMove { x: 0, y: 5 },
                 ValidMove { x: 0, y: 6 },
                 ValidMove { x: 0, y: 7 },
-                ValidMove { x: 1, y: 0 }, // Est
+                ValidMove { x: 1, y: 0 }, // East
                 ValidMove { x: 2, y: 0 },
                 ValidMove { x: 3, y: 0 },
                 ValidMove { x: 4, y: 0 },
