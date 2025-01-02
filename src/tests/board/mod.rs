@@ -1,4 +1,5 @@
 mod get_piece;
+mod move_piece;
 mod pieces_count;
 mod pieces_initial_coords;
 

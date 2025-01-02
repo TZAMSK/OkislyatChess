@@ -1,3 +1,5 @@
+pub mod action;
+
 use crate::pieces::{Color, Kind, Piece, Position};
 
 pub type Board = [[Option<Piece>; 8]; 8];
@@ -53,14 +55,4 @@ pub fn init_board() -> Board {
 
 pub fn create_piece(kind: Kind, color: Color, x: u8, y: u8) -> Option<Piece> {
     Some(Piece::new(kind, color, Position { x, y }))
-}
-
-pub fn get_piece(board: &Board, x: usize, y: usize) -> Option<&Piece> {
-    let piece = board[y - 1][x - 1].as_ref();
-
-    if piece.is_some() {
-        Some(piece?)
-    } else {
-        None
-    }
 }
