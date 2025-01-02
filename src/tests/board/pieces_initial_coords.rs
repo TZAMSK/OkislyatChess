@@ -11,14 +11,6 @@ mod tests {
         assert_eq!(
             get_piece_coords(&board, Kind::Pawn, None),
             vec![
-                Position { x: 1, y: 7 },
-                Position { x: 2, y: 7 },
-                Position { x: 3, y: 7 },
-                Position { x: 4, y: 7 },
-                Position { x: 5, y: 7 },
-                Position { x: 6, y: 7 },
-                Position { x: 7, y: 7 },
-                Position { x: 8, y: 7 },
                 Position { x: 1, y: 2 },
                 Position { x: 2, y: 2 },
                 Position { x: 3, y: 2 },
@@ -27,6 +19,14 @@ mod tests {
                 Position { x: 6, y: 2 },
                 Position { x: 7, y: 2 },
                 Position { x: 8, y: 2 },
+                Position { x: 1, y: 7 },
+                Position { x: 2, y: 7 },
+                Position { x: 3, y: 7 },
+                Position { x: 4, y: 7 },
+                Position { x: 5, y: 7 },
+                Position { x: 6, y: 7 },
+                Position { x: 7, y: 7 },
+                Position { x: 8, y: 7 },
             ]
         );
     }
@@ -76,10 +76,10 @@ mod tests {
         assert_eq!(
             get_piece_coords(&board, Kind::Rook, None),
             vec![
-                Position { x: 1, y: 8 },
-                Position { x: 8, y: 8 },
                 Position { x: 1, y: 1 },
                 Position { x: 8, y: 1 },
+                Position { x: 1, y: 8 },
+                Position { x: 8, y: 8 },
             ]
         );
     }
@@ -111,10 +111,10 @@ mod tests {
         assert_eq!(
             get_piece_coords(&board, Kind::Knight, None),
             vec![
-                Position { x: 2, y: 8 },
-                Position { x: 7, y: 8 },
                 Position { x: 2, y: 1 },
                 Position { x: 7, y: 1 },
+                Position { x: 2, y: 8 },
+                Position { x: 7, y: 8 },
             ]
         );
     }
@@ -146,10 +146,10 @@ mod tests {
         assert_eq!(
             get_piece_coords(&board, Kind::Bishop, None),
             vec![
-                Position { x: 3, y: 8 },
-                Position { x: 6, y: 8 },
                 Position { x: 3, y: 1 },
                 Position { x: 6, y: 1 },
+                Position { x: 3, y: 8 },
+                Position { x: 6, y: 8 },
             ]
         );
     }
@@ -180,7 +180,7 @@ mod tests {
 
         assert_eq!(
             get_piece_coords(&board, Kind::Queen, None),
-            vec![Position { x: 4, y: 8 }, Position { x: 4, y: 1 }]
+            vec![Position { x: 4, y: 1 }, Position { x: 4, y: 8 }]
         );
     }
 
@@ -210,7 +210,7 @@ mod tests {
 
         assert_eq!(
             get_piece_coords(&board, Kind::King, None),
-            vec![Position { x: 5, y: 8 }, Position { x: 5, y: 1 }]
+            vec![Position { x: 5, y: 1 }, Position { x: 5, y: 8 }]
         );
     }
 
