@@ -7,6 +7,7 @@ mod rook;
 
 use {bishop::Bishop, king::King, knight::Knight, pawn::Pawn, queen::Queen, rook::Rook};
 
+#[derive(Debug, PartialEq)]
 pub struct Piece {
     pub kind: Kind,
     pub color: Color,
@@ -15,7 +16,7 @@ pub struct Piece {
     //menaces: Vec<Piece>,
 }
 
-#[derive(PartialEq)]
+#[derive(PartialEq, Debug)]
 pub enum Kind {
     Bishop,
     King,
@@ -25,13 +26,13 @@ pub enum Kind {
     Rook,
 }
 
-#[derive(PartialEq, Clone)]
+#[derive(PartialEq, Debug, Clone)]
 pub enum Color {
     Black,
     White,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Position {
     pub x: u8,
     pub y: u8,
