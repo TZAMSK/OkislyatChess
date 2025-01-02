@@ -1,5 +1,6 @@
-mod pieces_coords;
+mod get_piece;
 mod pieces_count;
+mod pieces_initial_coords;
 
 use crate::board::Board;
 use crate::pieces::{Color, Kind, Piece, Position};
