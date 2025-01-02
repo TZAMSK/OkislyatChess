@@ -32,3 +32,18 @@ fn get_piece_coords(board: &Board, kind: Kind, color: Option<Color>) -> Vec<Posi
         .filter_map(|opt_piece| opt_piece.as_ref().map(|piece| piece.position.clone()))
         .collect()
 }
+
+fn count_pieces_on_board<'a, T>(board: &'a Board, cell_type: Option<T>) -> usize {
+    board
+        .iter()
+        .flat_map(|row| {
+            row.iter().filter(|piece| {
+                if cell_type.is_some() {
+                    piece.is_some()
+                } else {
+                    piece.is_none()
+                }
+            })
+        })
+        .count()
+}

@@ -1,5 +1,5 @@
 use crate::board::Board;
-use crate::pieces::{Piece, Position};
+use crate::pieces::{Kind, Piece, Position};
 
 pub fn get_piece(board: &Board, x: usize, y: usize) -> Option<&Piece> {
     let piece = board[y - 1][x - 1].as_ref();
@@ -27,6 +27,11 @@ pub fn move_piece(
                     x: to.0 as u8,
                     y: to.1 as u8,
                 };
+
+                match moving_piece.kind {
+                    Kind::Pawn => moving_piece.update_pawn_moves(),
+                    _ => moving_piece.updated_new_moves(),
+                }
 
                 board[to.1 - 1][to.0 - 1] = Some(moving_piece);
 
