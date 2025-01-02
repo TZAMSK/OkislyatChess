@@ -57,19 +57,7 @@ impl Piece {
         piece
     }
 
-    pub fn make_a_move(&mut self, new_x: u8, new_y: u8) -> Position {
-        let old_position = self.position.clone();
-        self.position = Position { x: new_x, y: new_y };
-
-        match self.kind {
-            Kind::Pawn => self.update_pawn_moves(),
-            _ => self.updated_new_moves(),
-        }
-
-        old_position
-    }
-
-    fn updated_new_moves(&mut self) {
+    pub fn updated_new_moves(&mut self) {
         let new_moves = self.new_moves();
 
         self.valid_moves = self.filtered_moves(new_moves)

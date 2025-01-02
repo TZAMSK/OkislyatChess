@@ -1,13 +1,12 @@
 #[cfg(test)]
 mod tests {
-    use crate::board::{get_piece, init_board};
+    use crate::board::action::get_piece;
+    use crate::board::init_board;
     use crate::pieces::{Color, Kind, Piece, Position, ValidMove};
-    use crate::tests::board::count_piece_by_type;
 
     #[test]
     fn board_has_a_white_pawn_at_position_1_2() {
         let board = init_board();
-
         assert_eq!(
             get_piece(&board, 1, 2),
             Some(&Piece {
@@ -152,5 +151,12 @@ mod tests {
                 ]
             })
         );
+    }
+
+    #[test]
+    fn board_has_no_piece_at_position_4_5() {
+        let board = init_board();
+
+        assert_eq!(get_piece(&board, 4, 5), None)
     }
 }
