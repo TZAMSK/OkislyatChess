@@ -13,3 +13,5 @@ pub const TITLE: &str = r"
 ";
 
 pub const MENU_ITEMS: [&'static str; 3] = ["2 Players", "Bot", "Quit"];
+
+pub const BOARD_LETTERS: [&'static str; 8] = ["A", "B", "C", "D", "E", "F", "G", "H"];
