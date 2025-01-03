@@ -1,9 +1,11 @@
 use ratatui::{
-    layout::{Constraint, Direction, Layout},
+    layout::{Alignment, Constraint, Direction, Layout},
     prelude::Rect,
-    widgets::{Block, Borders, Paragraph},
+    widgets::{Block, Borders, Padding, Paragraph},
     Frame,
 };
+
+use crate::ui::constants::BOARD_LETTERS;
 
 pub fn render_game_ui(frame: &mut Frame, main_area: Rect) {
     let main_layout_horizontal = Layout::default()
@@ -23,13 +25,13 @@ pub fn render_game_ui(frame: &mut Frame, main_area: Rect) {
         .direction(Direction::Horizontal)
         .constraints(
             [
-                Constraint::Ratio(6, 45),
-                Constraint::Ratio(2, 45),
-                Constraint::Ratio(22, 45), // Board
-                Constraint::Ratio(1, 45),
-                Constraint::Ratio(2, 45),
-                Constraint::Ratio(9, 45),
-                Constraint::Ratio(3, 45),
+                Constraint::Ratio(6, 47),
+                Constraint::Ratio(2, 47),
+                Constraint::Ratio(24, 47), // Board
+                Constraint::Ratio(1, 47),
+                Constraint::Ratio(2, 47),
+                Constraint::Ratio(9, 47),
+                Constraint::Ratio(3, 47),
             ]
             .as_ref(),
         )
@@ -39,37 +41,79 @@ pub fn render_game_ui(frame: &mut Frame, main_area: Rect) {
         .direction(Direction::Vertical)
         .constraints(
             [
-                Constraint::Ratio(2, 15),
-                Constraint::Ratio(11, 15),
-                Constraint::Ratio(2, 15),
+                Constraint::Ratio(3, 21),
+                Constraint::Ratio(15, 21),
+                Constraint::Ratio(3, 21),
             ]
             .as_ref(),
         )
         .split(main_layout_vertical[5]);
 
-    let letter_board_box_layout = Layout::default()
+    let letter_board_main_box_layout = Layout::default()
         .direction(Direction::Horizontal)
         .constraints(
             [
-                Constraint::Ratio(8, 45),
-                Constraint::Ratio(22, 45),
-                Constraint::Ratio(13, 45),
+                Constraint::Ratio(8, 47),
+                Constraint::Ratio(24, 47),
+                Constraint::Ratio(15, 47),
             ]
             .as_ref(),
         )
         .split(main_layout_horizontal[1]);
 
+    let letters_board_layout = Layout::default()
+        .direction(Direction::Horizontal)
+        .constraints(
+            [
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+            ]
+            .as_ref(),
+        )
+        .split(letter_board_main_box_layout[1]);
+
+    let numbers_board_layout = Layout::default()
+        .direction(Direction::Vertical)
+        .constraints(
+            [
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+                Constraint::Ratio(3, 24),
+            ]
+            .as_ref(),
+        )
+        .split(main_layout_vertical[1]);
+
     // Letters
-    frame.render_widget(
-        Paragraph::new("a block8").block(Block::new().borders(Borders::ALL)),
-        letter_board_box_layout[1],
-    );
+    for (index, letter) in BOARD_LETTERS.iter().enumerate() {
+        frame.render_widget(
+            Paragraph::new(*letter)
+                .alignment(Alignment::Center)
+                .block(Block::new().padding(Padding::new(1, 1, 2, 1))),
+            letters_board_layout[index],
+        );
+    }
 
     // Numbers
-    frame.render_widget(
-        Paragraph::new("a").block(Block::new().borders(Borders::ALL)),
-        main_layout_vertical[1],
-    );
+    for (index, number) in (1..=8).rev().enumerate() {
+        frame.render_widget(
+            Paragraph::new(number.to_string())
+                .alignment(Alignment::Center)
+                .block(Block::new().padding(Padding::new(1, 1, 2, 1))),
+            numbers_board_layout[index],
+        );
+    }
 
     // Chance
     frame.render_widget(
