@@ -9,16 +9,16 @@ impl Default for Engine {
 }
 
 impl Engine {
-    pub fn menu_cursor_up(&mut self, l: u8) {
+    pub fn menu_cursor_up(&mut self, length: u8) {
         if self.menu_cursor > 0 {
             self.menu_cursor -= 1;
         } else {
-            self.menu_cursor = l - 1;
+            self.menu_cursor = length - 1;
         }
     }
 
-    pub fn menu_cursor_down(&mut self, l: u8) {
-        if self.menu_cursor < l - 1 {
+    pub fn menu_cursor_down(&mut self, length: u8) {
+        if self.menu_cursor < length - 1 {
             self.menu_cursor += 1;
         } else {
             self.menu_cursor = 0;
