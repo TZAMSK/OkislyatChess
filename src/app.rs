@@ -1,8 +1,9 @@
 use std::error::Error;
 
-pub struct Engine {
+pub struct App {
     pub menu_cursor: u8,
     pub current_screen: Screen,
+    pub game: Game,
 }
 
 enum Screen {
@@ -13,16 +14,17 @@ enum Screen {
 
 pub type AppResult<T> = std::result::Result<T, Box<dyn Error>>;
 
-impl Default for Engine {
+impl Default for App {
     fn default() -> Self {
         Self {
             menu_cursor: 0,
             current_screen: Screen::Menu,
+            game: App::default(),
         }
     }
 }
 
-impl Engine {
+impl App {
     pub fn menu_cursor_up(&mut self, length: u8) {
         if self.menu_cursor > 0 {
             self.menu_cursor -= 1;

@@ -7,10 +7,10 @@ use ratatui::{
     Frame,
 };
 
-use crate::engine::Engine;
+use crate::app::App;
 use crate::ui::constants::{MENU_ITEMS, TITLE};
 
-pub fn render_menu_ui(frame: &mut Frame, engine: &Engine, main_area: Rect) {
+pub fn render_menu_ui(frame: &mut Frame, app: &App, main_area: Rect) {
     let main_layout_horizontal = Layout::default()
         .direction(Direction::Vertical)
         .constraints(
@@ -38,7 +38,7 @@ pub fn render_menu_ui(frame: &mut Frame, engine: &Engine, main_area: Rect) {
 
     for (i, menu_item) in MENU_ITEMS.iter().enumerate() {
         menu_body.push(Line::from(""));
-        let mut cursor = if engine.menu_cursor == i as u8 {
+        let mut cursor = if app.menu_cursor == i as u8 {
             "> ".to_string()
         } else {
             String::new()
