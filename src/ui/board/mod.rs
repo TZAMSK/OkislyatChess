@@ -1,11 +1,12 @@
 use ratatui::{
     layout::{Alignment, Constraint, Direction, Layout},
     prelude::Rect,
+    style::Stylize,
     widgets::{Block, Borders, Padding, Paragraph},
     Frame,
 };
 
-use crate::ui::constants::BOARD_LETTERS;
+use crate::ui::constants::{BLACK, BOARD_LETTERS, WHITE};
 
 pub fn render_game_ui(frame: &mut Frame, main_area: Rect) {
     let main_layout_horizontal = Layout::default()
@@ -110,38 +111,58 @@ pub fn render_game_ui(frame: &mut Frame, main_area: Rect) {
         frame.render_widget(
             Paragraph::new(number.to_string())
                 .alignment(Alignment::Center)
-                .block(Block::new().padding(Padding::new(1, 1, 2, 1))),
+                .block(Block::new().padding(Padding::new(1, 1, 3, 1))),
             numbers_board_layout[index],
         );
     }
 
+    // Board
+    let board_rows = Layout::default()
+        .direction(Direction::Vertical)
+        .constraints(vec![Constraint::Ratio(1, 8); 8])
+        .split(main_layout_vertical[2]);
+
+    for (row_idx, row) in board_rows.iter().enumerate() {
+        let row_cells = Layout::default()
+            .direction(Direction::Horizontal)
+            .constraints(vec![Constraint::Ratio(1, 8); 8])
+            .split(*row);
+
+        for (col_idx, _) in row_cells.iter().enumerate() {
+            let bg_color = if (row_idx + col_idx) % 2 == 1 {
+                BLACK
+            } else {
+                WHITE
+            };
+
+            frame.render_widget(
+                Paragraph::new("").block(Block::new().bg(bg_color)),
+                row_cells[col_idx],
+            );
+        }
+    }
+
     // Chance
     frame.render_widget(
-        Paragraph::new("a block3").block(Block::new().borders(Borders::ALL)),
-        main_layout_vertical[2],
-    );
-
-    // Board
-    frame.render_widget(
-        Paragraph::new("a block4").block(Block::new().borders(Borders::ALL)),
+        Paragraph::new("").block(Block::new().borders(Borders::ALL)),
         main_layout_vertical[3],
     );
 
     // Black feed
     frame.render_widget(
-        Paragraph::new("a block9").block(Block::new().borders(Borders::ALL)),
+        Paragraph::new("").block(Block::new().borders(Borders::ALL)),
         right_box_layout[0],
     );
 
     // History
     frame.render_widget(
-        Paragraph::new("a block10").block(Block::new().borders(Borders::ALL)),
+        Paragraph::new("").block(Block::new().borders(Borders::ALL)),
         right_box_layout[1],
     );
 
     // White feed
     frame.render_widget(
-        Paragraph::new("a block11").block(Block::new().borders(Borders::ALL)),
+        Paragraph::new("").block(Block::new().borders(Borders::ALL)),
         right_box_layout[2],
     );
 }
