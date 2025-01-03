@@ -3,11 +3,13 @@ pub struct Knight;
 impl Knight {
     pub fn draw() -> &'static str {
         "\
+            \n\
     \n\
-    ▟▛██▙\n\
-   ▟█████\n\
-   ▀▀▟██▌\n\
-    ▟████\n\
+    ▟█▛██▙\n\
+   ▟██████\n\
+   ▀▀▀▐██▌\n\
+    ▟███▌\n\
+   ▟██████\n\
     "
     }
 
