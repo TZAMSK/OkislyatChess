@@ -3,11 +3,13 @@ pub struct Rook;
 impl Rook {
     pub fn draw() -> &'static str {
         "\
+            \n\
     \n\
-    █▟█▙█\n\
-    ▜███▛\n\
+   ██▟█▙██\n\
+   ▜█████▛\n\
     ▐███▌\n\
-   ▗█████▖\n\
+    ▐███▌\n\
+  ▗███████▖\n\
     "
     }
 

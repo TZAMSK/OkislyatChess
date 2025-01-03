@@ -27,11 +27,13 @@ pub struct Pawn;
 impl Pawn {
     pub fn draw() -> &'static str {
         "\
-        \n\
+            \n\
         \n\
       ▟█▙\n\
-      ▜█▛\n\
-     ▟███▙\n\
+     █████\n\
+     █████\n\
+      ███\n\
+    ▟█████▙\n\
     "
     }
 

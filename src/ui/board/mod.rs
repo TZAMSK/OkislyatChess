@@ -1,11 +1,13 @@
+use ratatui::style::{Color, Style};
 use ratatui::{
     layout::{Alignment, Constraint, Direction, Layout},
     prelude::Rect,
     style::Stylize,
     widgets::{Block, Borders, Padding, Paragraph},
     Frame,
-};
+}; // Make sure these are imported
 
+use crate::board::init_board;
 use crate::ui::constants::{BLACK, BOARD_LETTERS, WHITE};
 
 pub fn render_game_ui(frame: &mut Frame, main_area: Rect) {
@@ -137,6 +139,50 @@ pub fn render_game_ui(frame: &mut Frame, main_area: Rect) {
 
             frame.render_widget(
                 Paragraph::new("").block(Block::new().bg(bg_color)),
+                row_cells[col_idx],
+            );
+        }
+    }
+
+    // Pieces
+    let pieces = init_board();
+
+    let pieces_rows = Layout::default()
+        .direction(Direction::Vertical)
+        .constraints(vec![Constraint::Ratio(1, 8); 8])
+        .split(main_layout_vertical[2]);
+
+    for (row_idx, row) in pieces_rows.iter().enumerate() {
+        let row_cells = Layout::default()
+            .direction(Direction::Horizontal)
+            .constraints(vec![Constraint::Ratio(1, 8); 8])
+            .split(*row);
+
+        for (col_idx, _) in row_cells.iter().enumerate() {
+            let piece = &pieces[7 - row_idx][col_idx];
+
+            let chess_piece = match piece {
+                Some(p) => match p.color {
+                    crate::pieces::Color::Black => p.draw().to_string(),
+                    crate::pieces::Color::White => p.draw().to_string(),
+                },
+                None => "".to_string(),
+            };
+
+            // Set the color style based on the piece's color
+            let style = match piece {
+                Some(p) => match p.color {
+                    crate::pieces::Color::Black => Style::default().fg(Color::Black), // Black text
+                    crate::pieces::Color::White => Style::default().fg(Color::White), // White text
+                },
+                None => Style::default(), // No color for empty cells
+            };
+
+            frame.render_widget(
+                Paragraph::new(chess_piece)
+                    .block(Block::new())
+                    .alignment(Alignment::Center)
+                    .style(style), // Apply the style
                 row_cells[col_idx],
             );
         }
