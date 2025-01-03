@@ -8,7 +8,7 @@ use ratatui::{
 };
 
 use crate::engine::Engine;
-use crate::ui::constants::TITLE;
+use crate::ui::constants::{MENU_ITEMS, TITLE};
 
 pub fn render_menu_ui(frame: &mut Frame, engine: &Engine, main_area: Rect) {
     let main_layout_horizontal = Layout::default()
@@ -28,24 +28,23 @@ pub fn render_menu_ui(frame: &mut Frame, engine: &Engine, main_area: Rect) {
         .block(Block::default());
     frame.render_widget(title_paragraph, main_layout_horizontal[0]);
 
-    let text: Vec<Line<'_>> = vec![Line::from(""), Line::from("A chess game made in 🦀")];
+    let text: Vec<Line<'_>> = vec![Line::from("A chess game made in 🦀")];
     let sub_title = Paragraph::new(text)
         .alignment(Alignment::Center)
         .block(Block::default());
     frame.render_widget(sub_title, main_layout_horizontal[1]);
 
-    let menu_items = ["Solo", "Bot", "Quit"];
     let mut menu_body: Vec<Line<'_>> = vec![];
 
-    for (i, menu_item) in menu_items.iter().enumerate() {
+    for (i, menu_item) in MENU_ITEMS.iter().enumerate() {
         menu_body.push(Line::from(""));
-        let mut text = if engine.menu_cursor == i as u8 {
+        let mut cursor = if engine.menu_cursor == i as u8 {
             "> ".to_string()
         } else {
             String::new()
         };
-        text.push_str(menu_item);
-        menu_body.push(Line::from(text));
+        cursor.push_str(menu_item);
+        menu_body.push(Line::from(cursor));
     }
 
     let sub_title = Paragraph::new(menu_body)
