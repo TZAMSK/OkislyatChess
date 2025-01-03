@@ -1,24 +1,19 @@
 use ratatui::{
     layout::{Constraint, Direction, Layout},
-    prelude::{Alignment, Rect},
-    style::Stylize,
-    text::Line,
-    widgets::{Block, Paragraph},
+    prelude::Rect,
+    widgets::{Block, Borders, Paragraph},
     Frame,
 };
 
-use crate::app::App;
-use crate::pieces::Color;
-use crate::ui::constants::{MENU_ITEMS, TITLE};
-
-pub fn render_game_ui(frame: &mut Frame<'_>, app: &mut App, main_area: Rect) {
+pub fn render_game_ui(frame: &mut Frame, main_area: Rect) {
     let main_layout_horizontal = Layout::default()
         .direction(Direction::Vertical)
         .constraints(
             [
-                Constraint::Ratio(1, 18),
-                Constraint::Ratio(16, 18),
-                Constraint::Ratio(1, 18),
+                Constraint::Ratio(1, 25),
+                Constraint::Ratio(2, 25),
+                Constraint::Ratio(21, 25),
+                Constraint::Ratio(1, 25),
             ]
             .as_ref(),
         )
@@ -28,14 +23,17 @@ pub fn render_game_ui(frame: &mut Frame<'_>, app: &mut App, main_area: Rect) {
         .direction(Direction::Horizontal)
         .constraints(
             [
-                Constraint::Ratio(2, 17),
-                Constraint::Ratio(9, 17),
-                Constraint::Ratio(1, 17),
-                Constraint::Ratio(5, 17),
+                Constraint::Ratio(6, 45),
+                Constraint::Ratio(2, 45),
+                Constraint::Ratio(22, 45), // Board
+                Constraint::Ratio(1, 45),
+                Constraint::Ratio(2, 45),
+                Constraint::Ratio(9, 45),
+                Constraint::Ratio(3, 45),
             ]
             .as_ref(),
         )
-        .split(main_layout_horizontal[1]);
+        .split(main_layout_horizontal[2]);
 
     let right_box_layout = Layout::default()
         .direction(Direction::Vertical)
@@ -47,37 +45,59 @@ pub fn render_game_ui(frame: &mut Frame<'_>, app: &mut App, main_area: Rect) {
             ]
             .as_ref(),
         )
-        .split(main_layout_vertical[3]);
+        .split(main_layout_vertical[5]);
 
-    // We render the board_block in the center layout made above
-    frame.render_widget(board_block.clone(), main_layout_vertical[1]);
+    let letter_board_box_layout = Layout::default()
+        .direction(Direction::Horizontal)
+        .constraints(
+            [
+                Constraint::Ratio(8, 45),
+                Constraint::Ratio(22, 45),
+                Constraint::Ratio(13, 45),
+            ]
+            .as_ref(),
+        )
+        .split(main_layout_horizontal[1]);
 
-    let game_clone = app.game.clone();
-
-    app.game.ui.board_render(
-        board_block.inner(main_layout_vertical[1]),
-        frame,
-        &game_clone,
-    ); // Mutable borrow now allowed
-
-    //top box for white material
-    app.game.ui.black_material_render(
-        app.inner(right_box_layout[0]),
-        frame,
-        &app.game.game_board.black_taken_pieces,
+    // Letters
+    frame.render_widget(
+        Paragraph::new("a block8").block(Block::new().borders(Borders::ALL)),
+        letter_board_box_layout[1],
     );
 
-    // We make the inside of the board
-    app.game.ui.history_render(
-        board_block.inner(right_box_layout[1]),
-        frame,
-        &app.game.game_board.move_history,
+    // Numbers
+    frame.render_widget(
+        Paragraph::new("a").block(Block::new().borders(Borders::ALL)),
+        main_layout_vertical[1],
     );
 
-    //bottom box for black matetrial
-    app.game.ui.white_material_render(
-        board_block.inner(right_box_layout[2]),
-        frame,
-        &app.game.game_board.white_taken_pieces,
+    // Chance
+    frame.render_widget(
+        Paragraph::new("a block3").block(Block::new().borders(Borders::ALL)),
+        main_layout_vertical[2],
+    );
+
+    // Board
+    frame.render_widget(
+        Paragraph::new("a block4").block(Block::new().borders(Borders::ALL)),
+        main_layout_vertical[3],
+    );
+
+    // Black feed
+    frame.render_widget(
+        Paragraph::new("a block9").block(Block::new().borders(Borders::ALL)),
+        right_box_layout[0],
+    );
+
+    // History
+    frame.render_widget(
+        Paragraph::new("a block10").block(Block::new().borders(Borders::ALL)),
+        right_box_layout[1],
+    );
+
+    // White feed
+    frame.render_widget(
+        Paragraph::new("a block11").block(Block::new().borders(Borders::ALL)),
+        right_box_layout[2],
     );
 }

@@ -3,7 +3,6 @@ use std::error::Error;
 pub struct App {
     pub menu_cursor: u8,
     pub current_screen: Screen,
-    pub game: Game,
 }
 
 enum Screen {
@@ -19,7 +18,6 @@ impl Default for App {
         Self {
             menu_cursor: 0,
             current_screen: Screen::Menu,
-            game: App::default(),
         }
     }
 }

@@ -6,7 +6,7 @@ mod tests;
 mod ui;
 
 use crate::controls::key_events;
-use crate::ui::menu;
+use crate::ui::board::render_game_ui;
 use app::App;
 
 use color_eyre::Result;
@@ -26,7 +26,7 @@ fn run(mut terminal: DefaultTerminal) -> Result<()> {
     loop {
         terminal.draw(|f| {
             let size = f.size();
-            menu::render_menu_ui(f, &app, size);
+            render_game_ui(f, size);
         })?;
 
         if let Err(_) = key_events(&mut app) {
