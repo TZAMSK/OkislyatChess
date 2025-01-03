@@ -1,10 +1,24 @@
+use std::error::Error;
+
 pub struct Engine {
     pub menu_cursor: u8,
+    pub current_screen: Screen,
 }
+
+enum Screen {
+    Menu,
+    TwoPlayers,
+    Bot,
+}
+
+pub type AppResult<T> = std::result::Result<T, Box<dyn Error>>;
 
 impl Default for Engine {
     fn default() -> Self {
-        Self { menu_cursor: 0 }
+        Self {
+            menu_cursor: 0,
+            current_screen: Screen::Menu,
+        }
     }
 }
 
@@ -22,6 +36,18 @@ impl Engine {
             self.menu_cursor += 1;
         } else {
             self.menu_cursor = 0;
+        }
+    }
+
+    pub fn back_to_menu(&mut self) {
+        self.current_screen = Screen::Menu;
+    }
+
+    pub fn menu_item_selected(&mut self) {
+        match self.menu_cursor {
+            0 => self.current_screen = Screen::TwoPlayers,
+            1 => self.current_screen = Screen::Bot,
+            _ => {}
         }
     }
 }
