@@ -5,7 +5,7 @@ pub struct App {
     pub current_screen: Screen,
 }
 
-enum Screen {
+pub enum Screen {
     Menu,
     TwoPlayers,
     Bot,
