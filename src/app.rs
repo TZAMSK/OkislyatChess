@@ -1,9 +1,12 @@
 use std::error::Error;
 
+use crate::area::Area;
+
 pub struct App {
     pub menu_cursor: u8,
     pub current_screen: Screen,
     pub mouse_position: Option<(u8, u8)>,
+    pub area: Area,
 }
 
 pub enum Screen {
@@ -21,6 +24,7 @@ impl Default for App {
             menu_cursor: 0,
             current_screen: Screen::Menu,
             mouse_position: None,
+            area: Area::new(),
         }
     }
 }
