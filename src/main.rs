@@ -1,4 +1,5 @@
 mod app;
+mod area;
 mod board;
 mod controls;
 mod pieces;
