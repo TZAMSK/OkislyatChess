@@ -5,12 +5,13 @@ mod pieces;
 mod tests;
 mod ui;
 
-use crate::controls::key_events;
-use crate::ui::board::render_game_ui;
 use app::{App, Screen};
-
 use color_eyre::Result;
 use ratatui::DefaultTerminal;
+
+use crate::controls::key_events;
+use ui::board::render_game_ui;
+use ui::help::render_help_ui;
 use ui::menu::render_menu_ui;
 
 fn main() -> Result<()> {
@@ -30,6 +31,7 @@ fn run(mut terminal: DefaultTerminal) -> Result<()> {
             match app.current_screen {
                 Screen::Menu => render_menu_ui(f, &app, size),
                 Screen::TwoPlayers | Screen::Bot => render_game_ui(f, size),
+                Screen::Help => render_help_ui(f, size),
             }
         })?;
 

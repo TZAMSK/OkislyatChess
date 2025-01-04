@@ -1,7 +1,9 @@
 use ratatui::style::Color;
 
-pub const WHITE: Color = Color::Rgb(160, 160, 160);
-pub const BLACK: Color = Color::Rgb(128, 95, 69);
+pub const BOARD_WHITE: Color = Color::Rgb(231, 193, 147);
+pub const BOARD_BLACK: Color = Color::Rgb(138, 95, 73);
+pub const PIECE_WHITE: Color = Color::Rgb(251, 242, 230);
+pub const PIECE_BLACK: Color = Color::Rgb(27, 15, 12);
 
 pub const TITLE: &str = r"
  ██████╗ ██╗  ██╗██╗███████╗██╗   ██╗   ██╗ █████╗ ████████╗
@@ -12,6 +14,17 @@ pub const TITLE: &str = r"
  ╚═════╝ ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝ ╚═╝   ╚═╝  ╚═╝   ╚═╝ 
 ";
 
-pub const MENU_ITEMS: [&'static str; 3] = ["2 Players", "Bot", "Quit"];
+pub const HELP: &str = r"
+██╗  ██╗███████╗██╗     ██████╗
+██║  ██║██╔════╝██║     ██╔══██╗
+███████║█████╗  ██║     ██████╔╝
+██╔══██║██╔══╝  ██║     ██╔═══╝
+██║  ██║███████╗███████╗██║
+╚═╝  ╚═╝╚══════╝╚══════╝╚═╝
+";
+
+pub const MENU_ITEMS: [&'static str; 4] = ["2 Players", "Bot", "Help", "Quit"];
 
 pub const BOARD_LETTERS: [&'static str; 8] = ["A", "B", "C", "D", "E", "F", "G", "H"];
+
+pub const PIECES: [&'static str; 6] = ["Pawn", "Rook", "Knight", "Bishop", "Queen", "King"];

@@ -9,6 +9,7 @@ pub enum Screen {
     Menu,
     TwoPlayers,
     Bot,
+    Help,
 }
 
 pub type AppResult<T> = std::result::Result<T, Box<dyn Error>>;
@@ -47,6 +48,7 @@ impl App {
         match self.menu_cursor {
             0 => self.current_screen = Screen::TwoPlayers,
             1 => self.current_screen = Screen::Bot,
+            2 => self.current_screen = Screen::Help,
             _ => {}
         }
     }
