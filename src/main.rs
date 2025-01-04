@@ -7,6 +7,9 @@ mod ui;
 
 use app::{App, Screen};
 use color_eyre::Result;
+use crossterm::event::{DisableMouseCapture, EnableMouseCapture};
+use crossterm::terminal::{EnterAlternateScreen, LeaveAlternateScreen};
+use ratatui::crossterm::execute;
 use ratatui::DefaultTerminal;
 
 use crate::controls::key_events;
@@ -16,13 +19,24 @@ use ui::menu::render_menu_ui;
 
 fn main() -> Result<()> {
     color_eyre::install()?;
-    let terminal = ratatui::init();
-    let result = run(terminal);
+
+    let mut stdout = std::io::stdout();
+    execute!(stdout, EnterAlternateScreen, EnableMouseCapture)?;
+
+    let mut terminal = ratatui::init();
+    let result = run(&mut terminal);
     ratatui::restore();
+
+    execute!(
+        terminal.backend_mut(),
+        LeaveAlternateScreen,
+        DisableMouseCapture
+    )?;
+
     result
 }
 
-fn run(mut terminal: DefaultTerminal) -> Result<()> {
+fn run(terminal: &mut DefaultTerminal) -> Result<()> {
     let mut app = App::default();
 
     loop {

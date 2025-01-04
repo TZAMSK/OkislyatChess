@@ -3,6 +3,7 @@ use std::error::Error;
 pub struct App {
     pub menu_cursor: u8,
     pub current_screen: Screen,
+    pub mouse_position: Option<(u8, u8)>,
 }
 
 pub enum Screen {
@@ -19,6 +20,7 @@ impl Default for App {
         Self {
             menu_cursor: 0,
             current_screen: Screen::Menu,
+            mouse_position: None,
         }
     }
 }
@@ -51,5 +53,13 @@ impl App {
             2 => self.current_screen = Screen::Help,
             _ => {}
         }
+    }
+
+    pub fn mouse_position(&self) -> Option<(u8, u8)> {
+        self.mouse_position
+    }
+
+    pub fn handle_mouse_position(&mut self, x: u8, y: u8) {
+        self.mouse_position = Some((x, y))
     }
 }
