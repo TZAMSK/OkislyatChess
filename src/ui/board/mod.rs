@@ -1,14 +1,14 @@
-use ratatui::style::{Color, Style};
+use ratatui::style::Style;
 use ratatui::{
     layout::{Alignment, Constraint, Direction, Layout},
     prelude::Rect,
     style::Stylize,
     widgets::{Block, Borders, Padding, Paragraph},
     Frame,
-}; // Make sure these are imported
+};
 
 use crate::board::init_board;
-use crate::ui::constants::{BLACK, BOARD_LETTERS, WHITE};
+use crate::ui::constants::{BOARD_BLACK, BOARD_LETTERS, BOARD_WHITE, PIECE_BLACK, PIECE_WHITE};
 
 pub fn render_game_ui(frame: &mut Frame, main_area: Rect) {
     let main_layout_horizontal = Layout::default()
@@ -132,9 +132,9 @@ pub fn render_game_ui(frame: &mut Frame, main_area: Rect) {
 
         for (col_idx, _) in row_cells.iter().enumerate() {
             let bg_color = if (row_idx + col_idx) % 2 == 1 {
-                BLACK
+                BOARD_BLACK
             } else {
-                WHITE
+                BOARD_WHITE
             };
 
             frame.render_widget(
@@ -169,20 +169,19 @@ pub fn render_game_ui(frame: &mut Frame, main_area: Rect) {
                 None => "".to_string(),
             };
 
-            // Set the color style based on the piece's color
             let style = match piece {
                 Some(p) => match p.color {
-                    crate::pieces::Color::Black => Style::default().fg(Color::Black), // Black text
-                    crate::pieces::Color::White => Style::default().fg(Color::White), // White text
+                    crate::pieces::Color::Black => Style::default().fg(PIECE_BLACK),
+                    crate::pieces::Color::White => Style::default().fg(PIECE_WHITE),
                 },
-                None => Style::default(), // No color for empty cells
+                None => Style::default(),
             };
 
             frame.render_widget(
                 Paragraph::new(chess_piece)
                     .block(Block::new())
                     .alignment(Alignment::Center)
-                    .style(style), // Apply the style
+                    .style(style),
                 row_cells[col_idx],
             );
         }
