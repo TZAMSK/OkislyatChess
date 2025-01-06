@@ -45,7 +45,6 @@ mod tests {
         assert_eq!(count_pieces_on_board(&board, None::<()>), 32);
 
         move_piece(&mut board, (1, 2), (1, 3)).expect("a");
-
         assert_eq!(count_pieces_on_board(&board, None::<()>), 32);
     }
 }
