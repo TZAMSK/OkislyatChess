@@ -1,4 +1,5 @@
 pub mod action;
+pub mod mouse;
 
 use crate::pieces::{Color, Kind, Piece, Position};
 

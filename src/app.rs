@@ -55,6 +55,7 @@ impl App {
             0 => self.current_screen = Screen::TwoPlayers,
             1 => self.current_screen = Screen::Bot,
             2 => self.current_screen = Screen::Help,
+            3 => panic!(),
             _ => {}
         }
     }
@@ -62,7 +63,6 @@ impl App {
     pub fn mouse_position(&self) -> Option<(u8, u8)> {
         self.mouse_position
     }
-
     pub fn handle_mouse_position(&mut self, x: u8, y: u8) {
         self.mouse_position = Some((x, y))
     }
